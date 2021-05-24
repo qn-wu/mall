@@ -1,9 +1,9 @@
 <template>
   <div class="goods-item" @click="itemClick">
-    <img v-lazy="showImg" alt="" @load="imgLoad">
+    <img v-lazy="showImg" :key="showImg" @load="imgLoad">
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
-      <span class="price">{{goodsItem.orgPrice}}</span>
+      <span class="price">￥{{goodsItem.orgPrice}}</span>
       <span class="collect">{{goodsItem.cfav}}</span>
     </div>
   </div>
@@ -23,7 +23,7 @@ export default {
   computed: {
     // 判断数据中的图片位于哪种格式，并显示图片
     showImg() {
-      return this.goodsItem.image || this.goodsItem.show.img
+      return this.goodsItem.img || this.goodsItem.image || this.goodsItem.show.img
     }
   },
   methods: {
